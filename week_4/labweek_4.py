@@ -246,14 +246,257 @@ class Task:
 #Modified List Options Method 
 
 
+# class TaskList:
+#     def __init__(self, owner):
+#         self.owner = owner
+#         self.tasks = []
+
+#     def add_task(self, task_title):
+#         new_task = Task(task_title)
+#         self.tasks.append(new_task)
+
+#     def list_tasks(self):
+#         if not self.tasks:
+#             print("No tasks found.")
+#         else:
+#             for i, task in enumerate(self.tasks):
+#                 print(f"{i + 1}. {task}")
+
+#     def list_options(self):
+#         while True:
+#             print("\nTask List Menu")
+#             print("1. View tasks")
+#             print("2. Add a task")
+#             print("3. Mark a task as completed")
+#             print("4. Change the title of a task")
+#             print("5. Exit")
+
+#             choice = input("Choose an option: ")
+
+#             if choice == "1":
+#                 self.list_tasks()
+
+#             elif choice == "2":
+#                 title = input("Enter the title of the new task: ")
+#                 self.add_task(title)
+#                 print("Task added.")
+
+#             elif choice == "3":
+#                 self.list_tasks()
+#                 index = int(input("Enter the number of the task to mark as completed: ")) - 1
+#                 if 0 <= index < len(self.tasks):
+#                     self.tasks[index].mark_completed()
+#                     print("Task marked as completed.")
+#                 else:
+#                     print("Invalid task number.")
+
+#             elif choice == "4":
+#                 self.list_tasks()
+#                 index = int(input("Enter the number of the task to change the title: ")) - 1
+#                 if 0 <= index < len(self.tasks):
+#                     new_title = input("Enter the new title: ")
+#                     self.tasks[index].change_title(new_title)
+#                     print("Task title updated.")
+#                 else:
+#                     print("Invalid task number.")
+
+#             elif choice == "5":
+#                 print("Exiting Task List.")
+#                 break
+
+#             else:
+#                 print("Invalid option. Please try again.")
+
+
+
+#Python Libraries 
+
+#Adding more functionalities like date created and due date to each 
+
+import datetime  #imprting datetime library
+
+#Lets update the task class first 
+
+class Task:
+    def __init__(self, title, date_due):
+        self.title = title
+        self.completed = False
+        self.date_created = datetime.datetime.now()
+        self.date_due = date_due
+
+    def mark_completed(self):
+        self.completed = True
+
+    def change_title(self, new_title):
+        self.title = new_title
+
+    def change_date_due(self, date_due):
+        self.date_due = date_due
+
+    def __str__(self):
+        status = "✓" if self.completed else "✗"
+        return (f"{self.title} [{status}] | "
+                f"Created: {self.date_created.strftime('%Y-%m-%d')} | "
+                f"Due: {self.date_due.strftime('%Y-%m-%d')}")
+
+
+
+#Lets update the TaskList Class to us the latest feature that we implemented on Task class Structure 
+
+# class TaskList:
+#     def __init__(self, owner):
+#         self.owner = owner
+#         self.tasks = []
+
+#     def add_task(self, task):
+#         self.tasks.append(task)
+
+#     def list_tasks(self):
+#         if not self.tasks:
+#             print("No tasks found.")
+#         else:
+#             for i, task in enumerate(self.tasks):
+#                 print(f"{i + 1}. {task}")
+
+#     def list_options(self):
+#         while True:
+#             print("\nTask List Menu")
+#             print("1. Add a task")
+#             print("2. View tasks")
+#             print("3. Mark a task as completed")
+#             print("4. Change the title of a task")
+#             print("5. Change due date of a task")
+#             print("6. Exit")
+
+#             choice = input("Choose an option: ")
+
+#             if choice == "1":
+#                 title = input("Enter a task title: ")
+#                 input_date = input("Enter a due date (YYYY-MM-DD): ")
+#                 try:
+#                     date_object = datetime.datetime.strptime(input_date, "%Y-%m-%d")
+#                     task = Task(title, date_object)
+#                     self.add_task(task)
+#                     print("Task added.")
+#                 except ValueError:
+#                     print("Invalid date format. Please use YYYY-MM-DD.")
+
+#             elif choice == "2":
+#                 self.list_tasks()
+
+#             elif choice == "3":
+#                 self.list_tasks()
+#                 index = int(input("Enter task number to mark as completed: ")) - 1
+#                 if 0 <= index < len(self.tasks):
+#                     self.tasks[index].mark_completed()
+#                     print("Task marked as completed.")
+#                 else:
+#                     print("Invalid task number.")
+
+#             elif choice == "4":
+#                 self.list_tasks()
+#                 index = int(input("Enter task number to change the title: ")) - 1
+#                 if 0 <= index < len(self.tasks):
+#                     new_title = input("Enter new title: ")
+#                     self.tasks[index].change_title(new_title)
+#                     print("Task title updated.")
+#                 else:
+#                     print("Invalid task number.")
+
+#             elif choice == "5":
+#                 self.list_tasks()
+#                 index = int(input("Enter task number to change due date: ")) - 1
+#                 if 0 <= index < len(self.tasks):
+#                     new_due = input("Enter new due date (YYYY-MM-DD): ")
+#                     try:
+#                         new_due_date = datetime.datetime.strptime(new_due, "%Y-%m-%d")
+#                         self.tasks[index].change_date_due(new_due_date)
+#                         print("Due date updated.")
+#                     except ValueError:
+#                         print("Invalid date format.")
+#                 else:
+#                     print("Invalid task number.")
+
+#             elif choice == "6":
+#                 print("Exiting Task List.")
+#                 break
+
+#             else:
+#                 print("Invalid option.")
+#  #Lets Check the above examples 
+ 
+# if __name__ == "__main__":
+#     my_tasks = TaskList("MaheshProgramming")
+#     my_tasks.list_options()
+
+
+
+#Change Title and Due Date 
+#---------------------------------------------------
+
+def list_options(self):
+    while True:
+        print("\nOptions:")
+        print("1. Add a task")
+        print("2. View tasks")
+        print("3. Mark a task as completed")
+        print("4. Edit a task")
+        print("5. Quit")
+
+        choice = input("Choose an option: ")
+
+        if choice == "1":
+            title = input("Enter a task: ")
+            input_date = input("Enter a due date (YYYY-MM-DD): ")
+            date_object = datetime.datetime.strptime(input_date, "%Y-%m-%d")
+            task = Task(title, date_object)
+            self.add_task(task)
+
+        elif choice == "2":
+            self.view_tasks()
+
+        elif choice == "3":
+            self.view_tasks()
+            index = int(input("Enter the task number to mark as completed: ")) - 1
+            if 0 <= index < len(self.tasks):
+                self.tasks[index].mark_completed()
+
+        elif choice == "4":
+            self.view_tasks()
+            index = int(input("Enter the task number to edit: ")) - 1
+            if 0 <= index < len(self.tasks):
+                task = self.tasks[index]
+                print("\nEdit Options:")
+                print("a. Change title")
+                print("b. Change due date")
+                print("c. Both")
+
+                edit_choice = input("What would you like to edit? (a/b/c): ")
+
+                if edit_choice == "a" or edit_choice == "c":
+                    new_title = input("Enter new title: ")
+                    task.change_title(new_title)
+
+                if edit_choice == "b" or edit_choice == "c":
+                    new_due = input("Enter new due date (YYYY-MM-DD): ")
+                    new_due_date = datetime.datetime.strptime(new_due, "%Y-%m-%d")
+                    task.change_date_due(new_due_date)
+
+        elif choice == "5":
+            break
+
+        else:
+            print("Invalid choice. Please try again.")
+            
+            
+# Les Confirrm we have parameter change_title and change due_date 
 class TaskList:
     def __init__(self, owner):
         self.owner = owner
         self.tasks = []
 
-    def add_task(self, task_title):
-        new_task = Task(task_title)
-        self.tasks.append(new_task)
+    def add_task(self, task):
+        self.tasks.append(task)
 
     def list_tasks(self):
         if not self.tasks:
@@ -265,25 +508,32 @@ class TaskList:
     def list_options(self):
         while True:
             print("\nTask List Menu")
-            print("1. View tasks")
-            print("2. Add a task")
+            print("1. Add a task")
+            print("2. View tasks")
             print("3. Mark a task as completed")
             print("4. Change the title of a task")
-            print("5. Exit")
+            print("5. Change due date of a task")
+            print("6. Exit")
 
             choice = input("Choose an option: ")
 
             if choice == "1":
-                self.list_tasks()
+                title = input("Enter a task title: ")
+                input_date = input("Enter a due date (YYYY-MM-DD): ")
+                try:
+                    date_object = datetime.datetime.strptime(input_date, "%Y-%m-%d")
+                    task = Task(title, date_object)
+                    self.add_task(task)
+                    print("Task added.")
+                except ValueError:
+                    print("Invalid date format. Please use YYYY-MM-DD.")
 
             elif choice == "2":
-                title = input("Enter the title of the new task: ")
-                self.add_task(title)
-                print("Task added.")
+                self.list_tasks()
 
             elif choice == "3":
                 self.list_tasks()
-                index = int(input("Enter the number of the task to mark as completed: ")) - 1
+                index = int(input("Enter task number to mark as completed: ")) - 1
                 if 0 <= index < len(self.tasks):
                     self.tasks[index].mark_completed()
                     print("Task marked as completed.")
@@ -292,21 +542,51 @@ class TaskList:
 
             elif choice == "4":
                 self.list_tasks()
-                index = int(input("Enter the number of the task to change the title: ")) - 1
+                index = int(input("Enter task number to change the title: ")) - 1
                 if 0 <= index < len(self.tasks):
-                    new_title = input("Enter the new title: ")
+                    new_title = input("Enter new title: ")
                     self.tasks[index].change_title(new_title)
                     print("Task title updated.")
                 else:
                     print("Invalid task number.")
 
             elif choice == "5":
+                self.list_tasks()
+                index = int(input("Enter task number to change due date: ")) - 1
+                if 0 <= index < len(self.tasks):
+                    new_due = input("Enter new due date (YYYY-MM-DD): ")
+                    try:
+                        new_due_date = datetime.datetime.strptime(new_due, "%Y-%m-%d")
+                        self.tasks[index].change_date_due(new_due_date)
+                        print("Due date updated.")
+                    except ValueError:
+                        print("Invalid date format.")
+                else:
+                    print("Invalid task number.")
+
+            elif choice == "6":
                 print("Exiting Task List.")
                 break
 
             else:
-                print("Invalid option. Please try again.")
+                print("Invalid option.")
+ #Lets Check the above examples 
+ 
+
+def change_title(self, new_title):
+    self.title = new_title
+
+def change_date_due(self, new_due_date):
+    self.date_due = new_due_date
+
+
+if __name__ =="main":
+    my_tasks = TaskList("MaheshP")
+    my_tasks.list_options()
 
 
 
-#Python Libraries 
+
+#-------------------------------------------------------------------------------------------------
+
+
