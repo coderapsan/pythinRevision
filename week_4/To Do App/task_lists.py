@@ -103,39 +103,65 @@
 
 
 ##### Final Task_lists.py 
-import datetime
+# import datetime
 
-class Task:
-    def __init__(self, title, date_due):
-        self.title = title
-        self.date_due = date_due
-        self.completed = False
+# class Task:
+#     def __init__(self, title, date_due):
+#         self.title = title
+#         self.date_due = date_due
+#         self.completed = False
 
-    def mark_completed(self):
-        self.completed = True
+#     def mark_completed(self):
+#         self.completed = True
 
-    def change_title(self, new_title):
-        self.title = new_title
+#     def change_title(self, new_title):
+#         self.title = new_title
 
-    def change_date_due(self, new_due_date):
-        self.date_due = new_due_date
+#     def change_date_due(self, new_due_date):
+#         self.date_due = new_due_date
 
-    def __str__(self):
-        status = "✓" if self.completed else "✗"
-        return f"{self.title} (Due: {self.date_due.strftime('%Y-%m-%d')}) - {status}"
+#     def __str__(self):
+#         status = "✓" if self.completed else "✗"
+#         return f"{self.title} (Due: {self.date_due.strftime('%Y-%m-%d')}) - {status}"
 
+
+# class TaskList:
+#     def __init__(self, owner):
+#         self.owner = owner
+#         self.tasks = []
+
+#     def add_task(self, task):
+#         self.tasks.append(task)
+
+#     def view_tasks(self):
+#         if not self.tasks:
+#             print("No tasks added yet.")
+#             return
+#         for idx, task in enumerate(self.tasks, 1):
+#             print(f"{idx}. {task}")
+
+
+#####################Type Checking 
+
+from typing import List
+from tasks import Task
 
 class TaskList:
-    def __init__(self, owner):
-        self.owner = owner
-        self.tasks = []
+    def __init__(self):
+        self.tasks: List[Task] = []
 
-    def add_task(self, task):
+    def add_task(self, task: Task) -> None:
         self.tasks.append(task)
 
-    def view_tasks(self):
-        if not self.tasks:
-            print("No tasks added yet.")
-            return
-        for idx, task in enumerate(self.tasks, 1):
-            print(f"{idx}. {task}")
+    def remove_task(self, index: int) -> None:
+        if 0 <= index < len(self.tasks):
+            del self.tasks[index]
+
+    def get_tasks(self) -> List[Task]:
+        return self.tasks
+
+    def get_task(self, index: int) -> Task:
+        return self.tasks[index]
+
+    def complete_task(self, index: int) -> None:
+        self.tasks[index].mark_complete()
