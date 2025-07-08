@@ -143,25 +143,85 @@
 
 #####################Type Checking 
 
+# from typing import List
+# from tasks import Task
+
+# class TaskList:
+#     def __init__(self):
+#         self.tasks: List[Task] = []
+
+#     def add_task(self, task: Task) -> None:
+#         self.tasks.append(task)
+
+#     def remove_task(self, index: int) -> None:
+#         if 0 <= index < len(self.tasks):
+#             del self.tasks[index]
+
+#     def get_tasks(self) -> List[Task]:
+#         return self.tasks
+
+#     def get_task(self, index: int) -> Task:
+#         return self.tasks[index]
+
+#     def complete_task(self, index: int) -> None:
+#         self.tasks[index].mark_complete()
+
+
+
+
+
+#Docstrings and comments 
+
+
 from typing import List
 from tasks import Task
 
 class TaskList:
+    """A class to manage a collection of Task objects."""
+
     def __init__(self):
         self.tasks: List[Task] = []
 
     def add_task(self, task: Task) -> None:
+        """Adds a task to the task list.
+
+        Args:
+            task (Task): The task to be added.
+        """
         self.tasks.append(task)
 
     def remove_task(self, index: int) -> None:
+        """Removes a task from the list by its index.
+
+        Args:
+            index (int): The index of the task to be removed.
+        """
         if 0 <= index < len(self.tasks):
             del self.tasks[index]
 
     def get_tasks(self) -> List[Task]:
+        """Returns the list of all tasks.
+
+        Returns:
+            List[Task]: The current list of tasks.
+        """
         return self.tasks
 
     def get_task(self, index: int) -> Task:
+        """Retrieves a single task by index.
+
+        Args:
+            index (int): The index of the task to retrieve.
+
+        Returns:
+            Task: The task at the specified index.
+        """
         return self.tasks[index]
 
     def complete_task(self, index: int) -> None:
+        """Marks the task at the given index as complete.
+
+        Args:
+            index (int): The index of the task to mark complete.
+        """
         self.tasks[index].mark_complete()
